@@ -1,4 +1,15 @@
 import json
+from csv import DictReader
+
+# create a dictionary of stations by station id
+with open('stations.csv') as file:
+    reader = DictReader(file)
+    stations = list(reader)
+stations_by_id = {}
+for station in stations:
+    stations_by_id[station["Station"]] = {}
+    stations_by_id[station["Station"]] = station
+stations = stations_by_id
 
 #import the json data to a variable precipitation
 with open("precipitation.json") as file:
