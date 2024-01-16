@@ -10,4 +10,57 @@ for measurement in precipitation:
     if measurement["station"] == "GHCND:US1WAKG0038":
         seattle_precipitation.append(measurement)
 
-print(seattle_precipitation)
+# print(seattle_precipitation)
+
+total_precipitation_1 = 0
+total_precipitation_2 = 0
+total_precipitation_3 = 0
+total_precipitation_4 = 0
+total_precipitation_5 = 0
+total_precipitation_6 = 0
+total_precipitation_7 = 0
+total_precipitation_8 = 0
+total_precipitation_9 = 0
+total_precipitation_10 = 0
+total_precipitation_11 = 0
+total_precipitation_12 = 0
+for measurement in seattle_precipitation:
+    if measurement["date"].startswith("2010-01") == True:
+        total_precipitation_1 = total_precipitation_1 + measurement["value"]
+    elif measurement["date"].startswith("2010-02") == True:
+        total_precipitation_2 = total_precipitation_2 + measurement["value"]
+    elif measurement["date"].startswith("2010-03") == True:
+        total_precipitation_3 = total_precipitation_3 + measurement["value"]
+    elif measurement["date"].startswith("2010-04") == True:
+        total_precipitation_4 = total_precipitation_4 + measurement["value"]
+    elif measurement["date"].startswith("2010-05") == True:
+        total_precipitation_5 = total_precipitation_5 + measurement["value"]
+    elif measurement["date"].startswith("2010-06") == True:
+        total_precipitation_6 = total_precipitation_6 + measurement["value"]
+    elif measurement["date"].startswith("2010-07") == True:
+        total_precipitation_7 = total_precipitation_7 + measurement["value"]
+    elif measurement["date"].startswith("2010-08") == True:
+        total_precipitation_8 = total_precipitation_8 + measurement["value"]
+    elif measurement["date"].startswith("2010-09") == True:
+        total_precipitation_9 = total_precipitation_9 + measurement["value"]
+    elif measurement["date"].startswith("2010-10") == True:
+        total_precipitation_10 = total_precipitation_10 + measurement["value"]
+    elif measurement["date"].startswith("2010-11") == True:
+        total_precipitation_11 = total_precipitation_11 + measurement["value"]
+    elif measurement["date"].startswith("2010-12") == True:
+        total_precipitation_12 = total_precipitation_12 + measurement["value"]
+
+total_monthly_precipitation = [total_precipitation_1,total_precipitation_2,total_precipitation_3,total_precipitation_4,total_precipitation_5,total_precipitation_6,total_precipitation_7,total_precipitation_8,total_precipitation_9, total_precipitation_10, total_precipitation_11, total_precipitation_12]
+
+print(total_monthly_precipitation)
+
+results = {
+    "Seattle" : {
+        "station": "GHCND:US1WAKG0038",
+        "state" : "WA",
+        "total_monthly_precipitation" : total_monthly_precipitation
+    }
+}
+
+with open("results.json", 'w') as file:
+    json.dump(results, file, indent=4)
