@@ -12,6 +12,7 @@ for measurement in precipitation:
 
 # print(seattle_precipitation)
 
+#calculate total monthly precipitaion
 total_precipitation_1 = 0
 total_precipitation_2 = 0
 total_precipitation_3 = 0
@@ -52,13 +53,28 @@ for measurement in seattle_precipitation:
 
 total_monthly_precipitation = [total_precipitation_1,total_precipitation_2,total_precipitation_3,total_precipitation_4,total_precipitation_5,total_precipitation_6,total_precipitation_7,total_precipitation_8,total_precipitation_9, total_precipitation_10, total_precipitation_11, total_precipitation_12]
 
-print(total_monthly_precipitation)
+# print(total_monthly_precipitation)
+
+#calculate total yearly precipitation
+total_yearly_precipitation = 0
+for value in total_monthly_precipitation:
+    total_yearly_precipitation = total_yearly_precipitation + value
+
+#calculate relative monthly precipitation
+relative_monthly_precipitation = []
+for value in total_monthly_precipitation:
+    relative_monthly_precipitation.append(value/total_yearly_precipitation)
+
+print(relative_monthly_precipitation)
+
 
 results = {
     "Seattle" : {
         "station": "GHCND:US1WAKG0038",
         "state" : "WA",
-        "total_monthly_precipitation" : total_monthly_precipitation
+        "total_monthly_precipitation" : total_monthly_precipitation,
+        "total_yearly_precipitation" : total_yearly_precipitation,
+        "relative_monthly_precipitation" : relative_monthly_precipitation
     }
 }
 
